@@ -414,11 +414,11 @@ correcta: "Corazón"
 // Elegir pregunta al azar
 
 const bancoPreguntas =
+categoria === "ciencia" ? preguntasCiencia :
 categoria === "geografia" ? preguntasGeografia :
 categoria === "cine" ? preguntasCine :
 categoria === "historia" ? preguntasHistoria :
 categoria === "arte" ? preguntasArte :
-categoria === "ciencia" ? preguntasCiencia :
 preguntasMusica;
 
 const preguntaElegida =
