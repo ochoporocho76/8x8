@@ -1,93 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8x8 - Trivia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
+<title>8x8 - Trivia</title>
 
-        .juego {
-            max-width: 600px;
-            margin: auto;
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
 
-        h1 {
-            font-size: 42px;
-        }
+.juego {
+    max-width: 600px;
+    margin: auto;
+}
 
-        .categoria {
-            font-size: 24px;
-            margin-bottom: 30px;
-        }
+h1 {
+    font-size: 42px;
+    margin-bottom: 5px;
+}
 
-        .pregunta {
-            font-size: 22px;
-            margin-bottom: 25px;
-        }
+.categoria {
+    font-size: 24px;
+    margin: 20px 0;
+}
 
-        button {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 10px;
-            border: none;
-        }
+.pregunta {
+    font-size: 22px;
+    margin-bottom: 25px;
+}
 
-        #resultado {
-            margin-top: 25px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-    </style>
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
+
+#resultado {
+    margin-top: 25px;
+    font-size: 24px;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
 <div class="juego">
 
-    <h1>8x8</h1>
+<h1>8x8</h1>
 
-    <div class="categoria">
-        🎵 MÚSICA
-    </div>
+<div class="categoria">
+🎵 MÚSICA
+</div>
 
-    <div class="pregunta">
-        ¿Quién es conocido como el "Rey del Pop"?
-    </div>
+<div id="pregunta" class="pregunta"></div>
 
-    <button onclick="responder(false)">A — Elvis Presley</button>
-    <button onclick="responder(true)">B — Michael Jackson</button>
-    <button onclick="responder(false)">C — Freddie Mercury</button>
-    <button onclick="responder(false)">D — David Bowie</button>
-    <button onclick="responder(false)">E — Prince</button>
+<div id="respuestas"></div>
 
-    <div id="resultado"></div>
+<div id="resultado"></div>
 
 </div>
 
 <script>
-function responder(correcta) {
 
-    const resultado = document.getElementById("resultado");
+const preguntas = [
 
-    if (correcta) {
-        resultado.innerHTML = "✅ ¡CORRECTO!";
-    } else {
-        resultado.innerHTML = "❌ INCORRECTO";
-    }
+{
+pregunta: "¿Quién es conocido como el Rey del Pop?",
+respuestas: [
+"Elvis Presley",
+"Michael Jackson",
+"Prince",
+"David Bowie",
+"Freddie Mercury"
+],
+correcta: "Michael Jackson"
+},
+
+{
+pregunta: "¿Qué banda grabó Bohemian Rhapsody?",
+respuestas: [
+"The Beatles",
+"Queen",
+"Pink Floyd",
+"U2",
+"ABBA"
+],
+correcta: "Queen"
+},
+
+{
+pregunta: "¿Qué instrumento tiene normalmente 88 teclas?",
+respuestas: [
+"Órgano",
+"Piano",
+"Acordeón",
+"Clavecín",
+"Sintetizador"
+],
+correcta: "Piano"
+},
+
+{
+pregunta: "¿De qué país era el grupo ABBA?",
+respuestas: [
+"Noruega",
+"Dinamarca",
+"Suecia",
+"Finlandia",
+"Islandia"
+],
+correcta: "Suecia"
+},
+
+{
+pregunta: "¿Quién fue el cantante principal de Nirvana?",
+respuestas: [
+"Eddie Vedder",
+"Kurt Cobain",
+"Chris Cornell",
+"Layne Staley",
+"Dave Grohl"
+],
+correcta: "Kurt Cobain"
+},
+
+{
+pregunta: "¿Qué banda lanzó el álbum The Dark Side of the Moon?",
+respuestas: [
+"Led Zeppelin",
+"Pink Floyd",
+"The Doors",
+"Genesis",
+"Rush"
+],
+correcta: "Pink Floyd"
+},
+
+{
+pregunta: "¿Cuál de estos géneros nació en Jamaica?",
+respuestas: [
+"Reggae",
+"Grunge",
+"Disco",
+"Britpop",
+"Punk"
+],
+correcta: "Reggae"
+},
+
+{
+pregunta: "¿Quién compuso la Novena Sinfonía?",
+respuestas: [
+"Mozart",
+"Bach",
+"Beethoven",
+"Chopin",
+"Vivaldi"
+],
+correcta: "Beethoven"
+},
+
+{
+pregunta: "¿Qué banda argentina grabó De Música Ligera?",
+respuestas: [
+"Los Redondos",
+"Soda Stereo",
+"Virus",
+"Sumo",
+"Divididos"
+],
+correcta: "Soda Stereo"
+},
+
+{
+pregunta: "¿Qué artista publicó el álbum Thriller?",
+respuestas: [
+"Prince",
+"Michael Jackson",
+"Lionel Richie",
+"Stevie Wonder",
+"Elton John"
+],
+correcta: "Michael Jackson"
+}
+
+];
+
+
+// Elegir pregunta al azar
+
+const preguntaElegida =
+preguntas[Math.floor(Math.random() * preguntas.length)];
+
+
+// Mostrar pregunta
+
+document.getElementById("pregunta").textContent =
+preguntaElegida.pregunta;
+
+
+// Mezclar respuestas
+
+const respuestas = [...preguntaElegida.respuestas];
+
+respuestas.sort(() => Math.random() - 0.5);
+
+
+// Crear botones
+
+const contenedor =
+document.getElementById("respuestas");
+
+respuestas.forEach(respuesta => {
+
+const boton = document.createElement("button");
+
+boton.textContent = respuesta;
+
+boton.onclick = () => responder(respuesta);
+
+contenedor.appendChild(boton);
+
+});
+
+
+// Comprobar respuesta
+
+function responder(respuesta) {
+
+const resultado =
+document.getElementById("resultado");
+
+if (respuesta === preguntaElegida.correcta) {
+
+resultado.textContent = "✅ ¡CORRECTO!";
+
+} else {
+
+resultado.textContent = "❌ INCORRECTO";
 
 }
+
+}
+
 </script>
 
 </body>
