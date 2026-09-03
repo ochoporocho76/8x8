@@ -251,10 +251,52 @@ correcta: "Vincent van Gogh"
 }
 
 ];
+
+ const preguntasHistoria = [
+
+{
+pregunta: "¿En qué año llegó Cristóbal Colón a América?",
+respuestas: [
+"1492",
+"1453",
+"1512",
+"1600",
+"1776"
+],
+correcta: "1492"
+},
+
+{
+pregunta: "¿Quién fue el primer presidente de Argentina?",
+respuestas: [
+"José de San Martín",
+"Bernardino Rivadavia",
+"Manuel Belgrano",
+"Domingo Faustino Sarmiento",
+"Julio Argentino Roca"
+],
+correcta: "Bernardino Rivadavia"
+},
+
+{
+pregunta: "¿En qué año comenzó la Revolución Francesa?",
+respuestas: [
+"1776",
+"1789",
+"1810",
+"1848",
+"1914"
+],
+correcta: "1789"
+}
+
+];   
 // Elegir pregunta al azar
 
 const bancoPreguntas =
-categoria === "arte" ? preguntasArte : preguntasMusica;
+categoria === "historia" ? preguntasHistoria :
+categoria === "arte" ? preguntasArte :
+preguntasMusica;
 
 const preguntaElegida =
 bancoPreguntas[Math.floor(Math.random() * bancoPreguntas.length)];
