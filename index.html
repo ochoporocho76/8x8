@@ -60,9 +60,7 @@ button {
 
 <h1>8x8</h1>
 
-<div class="categoria">
-🎵 MÚSICA
-</div>
+<div id="categoria" class="categoria"></div>
 
 <div id="pregunta" class="pregunta"></div>
 
@@ -73,7 +71,8 @@ button {
 </div>
 
 <script>
-
+const params = new URLSearchParams(window.location.search);
+const categoria = params.get("categoria") || "musica";
 const preguntas = [
 
 {
@@ -242,7 +241,18 @@ function responder(respuesta) {
 
 const resultado =
 document.getElementById("resultado");
+const nombres = {
+  musica: "🎵 MÚSICA",
+  arte: "🎨 ARTE",
+  historia: "📜 HISTORIA",
+  cine: "🎬 CINE Y SERIES",
+  geografia: "🌎 GEOGRAFÍA",
+  ciencia: "🔬 CIENCIA Y NATURALEZA",
+  cultura: "🧠 CULTURA GENERAL",
+  tecnologia: "💻 TECNOLOGÍA"
+};
 
+document.getElementById("categoria").textContent = nombres[categoria] || nombres.musica;
 if (respuesta === preguntaElegida.correcta) {
 
 resultado.textContent = "✅ ¡CORRECTO!";
