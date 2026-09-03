@@ -3,14 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8x8</title>
+    <title>8x8 - Trivia</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .juego {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 42px;
+        }
+
+        .categoria {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .pregunta {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+
+        #resultado {
+            margin-top: 25px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>8x8</h1>
-    <h2>Trivia</h2>
+<div class="juego">
 
-    <p>¡Bienvenido al juego!</p>
+    <h1>8x8</h1>
+
+    <div class="categoria">
+        🎵 MÚSICA
+    </div>
+
+    <div class="pregunta">
+        ¿Quién es conocido como el "Rey del Pop"?
+    </div>
+
+    <button onclick="responder(false)">A — Elvis Presley</button>
+    <button onclick="responder(true)">B — Michael Jackson</button>
+    <button onclick="responder(false)">C — Freddie Mercury</button>
+    <button onclick="responder(false)">D — David Bowie</button>
+    <button onclick="responder(false)">E — Prince</button>
+
+    <div id="resultado"></div>
+
+</div>
+
+<script>
+function responder(correcta) {
+
+    const resultado = document.getElementById("resultado");
+
+    if (correcta) {
+        resultado.innerHTML = "✅ ¡CORRECTO!";
+    } else {
+        resultado.innerHTML = "❌ INCORRECTO";
+    }
+
+}
+</script>
 
 </body>
 </html>
