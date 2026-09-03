@@ -451,10 +451,51 @@ correcta: "Corazón"
 }
 
 ];    
+
+const preguntasTecnologia = [
+
+{
+pregunta: "¿Qué significa CPU?",
+respuestas: [
+"Unidad Central de Procesamiento",
+"Control Principal de Usuario",
+"Programa Central Universal",
+"Unidad de Memoria Principal",
+"Controlador de Procesos Unidos"
+],
+correcta: "Unidad Central de Procesamiento"
+},
+
+{
+pregunta: "¿Cuál de estos dispositivos se utiliza principalmente para almacenar información?",
+respuestas: [
+"Monitor",
+"Teclado",
+"Disco duro",
+"Parlante",
+"Micrófono"
+],
+correcta: "Disco duro"
+},
+
+{
+pregunta: "¿Qué empresa desarrolló el sistema operativo Android?",
+respuestas: [
+"Microsoft",
+"Apple",
+"Google",
+"IBM",
+"Intel"
+],
+correcta: "Google"
+}
+
+];    
 // Elegir pregunta al azar
 
 const bancoPreguntas =
 categoria === "ciencia" ? preguntasCiencia :
+categoria === "tecnologia" ? preguntasTecnologia :    
 categoria === "cultura" ? preguntasCultura :
 categoria === "geografia" ? preguntasGeografia :
 categoria === "cine" ? preguntasCine :
