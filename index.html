@@ -331,9 +331,50 @@ correcta: "Shakespeare in Love"
 }
 
 ];
+
+ const preguntasGeografia = [
+
+{
+pregunta: "¿Cuál es el país más grande del mundo?",
+respuestas: [
+"Canadá",
+"China",
+"Rusia",
+"Estados Unidos",
+"Brasil"
+],
+correcta: "Rusia"
+},
+
+{
+pregunta: "¿Cuál es la capital de Australia?",
+respuestas: [
+"Sídney",
+"Melbourne",
+"Canberra",
+"Perth",
+"Brisbane"
+],
+correcta: "Canberra"
+},
+
+{
+pregunta: "¿En qué continente se encuentra Egipto?",
+respuestas: [
+"Asia",
+"Europa",
+"África",
+"América",
+"Oceanía"
+],
+correcta: "África"
+}
+
+];   
 // Elegir pregunta al azar
 
 const bancoPreguntas =
+categoria === "geografia" ? preguntasGeografia :
 categoria === "cine" ? preguntasCine :
 categoria === "historia" ? preguntasHistoria :
 categoria === "arte" ? preguntasArte :
