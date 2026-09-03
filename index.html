@@ -291,9 +291,50 @@ correcta: "1789"
 }
 
 ];   
+
+const preguntasCine = [
+
+{
+pregunta: "¿Quién interpretó a Jack en Titanic?",
+respuestas: [
+"Leonardo DiCaprio",
+"Brad Pitt",
+"Tom Cruise",
+"Johnny Depp",
+"Matt Damon"
+],
+correcta: "Leonardo DiCaprio"
+},
+
+{
+pregunta: "¿Cómo se llama el mago protagonista de Harry Potter?",
+respuestas: [
+"Ron Weasley",
+"Harry Potter",
+"Draco Malfoy",
+"Albus Dumbledore",
+"Severus Snape"
+],
+correcta: "Harry Potter"
+},
+
+{
+pregunta: "¿Qué película ganó el Oscar a Mejor Película en 1998?",
+respuestas: [
+"Titanic",
+"Gladiador",
+"Shakespeare in Love",
+"Matrix",
+"Salvar al soldado Ryan"
+],
+correcta: "Shakespeare in Love"
+}
+
+];
 // Elegir pregunta al azar
 
 const bancoPreguntas =
+categoria === "cine" ? preguntasCine :
 categoria === "historia" ? preguntasHistoria :
 categoria === "arte" ? preguntasArte :
 preguntasMusica;
