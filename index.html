@@ -88,7 +88,7 @@ const categoria = params.get("categoria") || "musica";
 document.getElementById("categoria").textContent =
   nombres[categoria] || nombres.musica;   
     
-const preguntas = [
+const preguntasMusica = [
 
 {
 pregunta: "¿Quién es conocido como el Rey del Pop?",
@@ -212,11 +212,52 @@ correcta: "Michael Jackson"
 
 ];
 
+const preguntasArte = [
 
+{
+pregunta: "¿Quién pintó la Mona Lisa?",
+respuestas: [
+"Vincent van Gogh",
+"Pablo Picasso",
+"Leonardo da Vinci",
+"Claude Monet",
+"Salvador Dalí"
+],
+correcta: "Leonardo da Vinci"
+},
+
+{
+pregunta: "¿Quién pintó Guernica?",
+respuestas: [
+"Pablo Picasso",
+"Leonardo da Vinci",
+"Diego Velázquez",
+"Claude Monet",
+"Edvard Munch"
+],
+correcta: "Pablo Picasso"
+},
+
+{
+pregunta: "¿Qué artista pintó La noche estrellada?",
+respuestas: [
+"Vincent van Gogh",
+"Salvador Dalí",
+"Pablo Picasso",
+"Paul Cézanne",
+"Rembrandt"
+],
+correcta: "Vincent van Gogh"
+}
+
+];
 // Elegir pregunta al azar
 
+const bancoPreguntas =
+categoria === "arte" ? preguntasArte : preguntasMusica;
+
 const preguntaElegida =
-preguntas[Math.floor(Math.random() * preguntas.length)];
+bancoPreguntas[Math.floor(Math.random() * bancoPreguntas.length)];
 
 
 // Mostrar pregunta
