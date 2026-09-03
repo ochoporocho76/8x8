@@ -370,7 +370,47 @@ respuestas: [
 correcta: "África"
 }
 
-];   
+];
+
+const preguntasCiencia = [
+
+{
+pregunta: "¿Cuál es el planeta más cercano al Sol?",
+respuestas: [
+"Venus",
+"Marte",
+"Mercurio",
+"Júpiter",
+"Saturno"
+],
+correcta: "Mercurio"
+},
+
+{
+pregunta: "¿Cuántos huesos tiene aproximadamente el cuerpo humano adulto?",
+respuestas: [
+"106",
+"206",
+"306",
+"406",
+"506"
+],
+correcta: "206"
+},
+
+{
+pregunta: "¿Qué órgano bombea la sangre por todo el cuerpo?",
+respuestas: [
+"Pulmón",
+"Riñón",
+"Corazón",
+"Hígado",
+"Estómago"
+],
+correcta: "Corazón"
+}
+
+];    
 // Elegir pregunta al azar
 
 const bancoPreguntas =
@@ -378,6 +418,7 @@ categoria === "geografia" ? preguntasGeografia :
 categoria === "cine" ? preguntasCine :
 categoria === "historia" ? preguntasHistoria :
 categoria === "arte" ? preguntasArte :
+categoria === "ciencia" ? preguntasCiencia :
 preguntasMusica;
 
 const preguntaElegida =
