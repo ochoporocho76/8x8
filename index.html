@@ -7,49 +7,100 @@
 <title>8x8 - Trivia</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 25px;
+:root { --accent: #a855f7; --accent2:#7c3aed; --glow:rgba(168,85,247,.40); }
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  text-align:center;
+  padding:28px 18px 40px;
+  background:#020204;
+  position:relative;
+  overflow-x:hidden;
+  isolation:isolate;
 }
-
-.juego {
-    max-width: 600px;
-    margin: auto;
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-3;
+  background-image:var(--category-bg);
+  background-size:cover; background-position:center top; background-repeat:no-repeat;
+  filter:saturate(1.08) contrast(1.03);
+  transform:scale(1.02);
 }
-
-h1 {
-    font-size: 42px;
-    margin-bottom: 5px;
+body::after{
+  content:"";
+  position:fixed; inset:0; z-index:-2;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(0,0,0,.05), rgba(0,0,0,.44) 48%, rgba(0,0,0,.80) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.50) 100%);
 }
-
-.categoria {
-    font-size: 24px;
-    margin: 20px 0;
+.juego{
+  width:min(640px,100%); margin:0 auto; position:relative;
+  padding:12px 0 0;
 }
-
-.pregunta {
-    font-size: 22px;
-    margin-bottom: 25px;
+.marca{
+  display:inline-block;
+  font-size:clamp(54px,10vw,82px);
+  line-height:.9;
+  font-weight:900;
+  letter-spacing:-4px;
+  color:#fff;
+  text-shadow:0 3px 12px rgba(0,0,0,.65),0 0 22px var(--glow);
+  margin:4px 0 4px;
 }
-
-button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: none;
+.categoria{
+  display:inline-flex; align-items:center; justify-content:center; gap:12px;
+  font-size:clamp(24px,5vw,36px); font-weight:900;
+  letter-spacing:.4px; margin:14px 0 24px;
+  color:var(--accent);
+  text-shadow:0 0 12px var(--glow),0 2px 5px rgba(0,0,0,.75);
 }
+.categoria::before{content:""; width:18px; height:18px; border:3px solid var(--accent); border-radius:50%; box-shadow:0 0 12px var(--glow)}
+.pregunta{
+  width:min(590px,96%); margin:0 auto 22px;
+  padding:17px 18px;
+  border-radius:16px;
+  background:rgba(0,0,0,.49);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 12px 35px rgba(0,0,0,.42),0 0 18px rgba(0,0,0,.20);
+  backdrop-filter:blur(5px);
+  font-size:clamp(21px,4vw,27px);
+  line-height:1.28;
+  font-weight:700;
+  text-shadow:0 2px 5px rgba(0,0,0,.75);
+}
+#respuestas{width:min(590px,96%);margin:0 auto;display:grid;gap:10px}
+button{
+  display:block; width:100%; padding:14px 18px; margin:0;
+  font-size:clamp(17px,3vw,21px); line-height:1.15; color:#fff;
+  cursor:pointer; border-radius:12px;
+  border:1.5px solid var(--accent);
+  background:linear-gradient(180deg,rgba(18,18,20,.78),rgba(0,0,0,.68));
+  box-shadow:inset 0 0 20px rgba(0,0,0,.28),0 0 0 rgba(0,0,0,0);
+  transition:transform .12s ease, box-shadow .15s ease, background .15s ease;
+  text-shadow:0 1px 3px rgba(0,0,0,.9);
+}
+button:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(36,36,40,.85),rgba(0,0,0,.73));box-shadow:0 0 15px var(--glow)}
+button:active{transform:translateY(1px)}
+#resultado{margin:22px auto 0;width:min(590px,96%);font-size:25px;font-weight:900;min-height:31px;text-shadow:0 2px 5px rgba(0,0,0,.9)}
 
-#resultado {
-    margin-top: 25px;
-    font-size: 24px;
-    font-weight: bold;
+body.musica{--accent:#c026ff;--accent2:#7c3aed;--glow:rgba(192,38,255,.48);--category-bg:url('backgrounds/musica.jpg')}
+body.arte{--accent:#ff8a00;--accent2:#ff5a00;--glow:rgba(255,122,0,.42);--category-bg:url('backgrounds/arte.jpg')}
+body.historia{--accent:#d9a72a;--accent2:#8c6510;--glow:rgba(217,167,42,.40);--category-bg:url('backgrounds/historia.jpg')}
+body.cine{--accent:#ff1f26;--accent2:#8e1418;--glow:rgba(255,31,38,.42);--category-bg:url('backgrounds/cine.jpg')}
+body.geografia{--accent:#12d4de;--accent2:#046d76;--glow:rgba(18,212,222,.40);--category-bg:url('backgrounds/geografia.jpg')}
+body.ciencia{--accent:#8be529;--accent2:#3c8f0a;--glow:rgba(139,229,41,.36);--category-bg:url('backgrounds/ciencia.jpg')}
+body.cultura{--accent:#1598ff;--accent2:#075ea6;--glow:rgba(21,152,255,.38);--category-bg:url('backgrounds/cultura.jpg')}
+body.tecnologia{--accent:#11d7ff;--accent2:#07788f;--glow:rgba(17,215,255,.40);--category-bg:url('backgrounds/tecnologia.jpg')}
+
+@media (max-width:600px){
+ body{padding:18px 12px 28px;background-position:center top}
+ .juego{padding-top:2px}
+ .marca{margin-top:2px}
+ .categoria{margin-top:16px;margin-bottom:18px}
+ .pregunta{padding:14px 14px;font-size:20px}
+ button{padding:13px 14px}
 }
 </style>
 </head>
@@ -58,7 +109,7 @@ button {
 
 <div class="juego">
 
-<h1>8x8</h1>
+<div class="marca">8x8</div>
 
 <div id="categoria" class="categoria"></div>
 
@@ -73,16 +124,18 @@ button {
 <script>
 const params = new URLSearchParams(window.location.search);
 const categoria = params.get("categoria") || "musica";
+
+document.body.className = categoria;
     
  const nombres = {
-  musica: "🎵 MÚSICA",
-  arte: "🎨 ARTE",
-  historia: "📜 HISTORIA",
-  cine: "🎬 CINE Y SERIES",
-  geografia: "🌎 GEOGRAFÍA",
-  ciencia: "🔬 CIENCIA Y NATURALEZA",
-  cultura: "🧠 CULTURA GENERAL",
-  tecnologia: "💻 TECNOLOGÍA"
+  musica: "MÚSICA",
+  arte: "ARTE",
+  historia: "HISTORIA",
+  cine: "CINE Y SERIES",
+  geografia: "GEOGRAFÍA",
+  ciencia: "CIENCIA Y NATURALEZA",
+  cultura: "CULTURA GENERAL",
+  tecnologia: "TECNOLOGÍA"
 };
 
 document.getElementById("categoria").textContent =
